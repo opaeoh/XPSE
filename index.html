@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opaeoh / XPSE</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .search-container {
+            width: 80%;
+            max-width: 800px;
+        }
+        .x-logo {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+            user-select: none;
+            transition: transform 0.5s ease;
+        }
+        .not-affiliated {
+            position: absolute;
+            top: 90px;
+            left: 50px;
+            font-family: 'Fira Code', monospace;
+            font-size: 10px;
+            color: white;
+            opacity: 0.5;
+        }
+        .spin {
+            transform: rotate(360deg);
+        }
+        .footer-text {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            color: white;
+            opacity: 0.7;
+        }
+        .profile-link {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-family: 'Fira Code', monospace;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .profile-link:hover {
+            color: #1DA1F2;
+        }
+    </style>
+</head>
+<body>
+    <div class="x-logo" id="x-logo">𝕏</div>
+    <div class="not-affiliated">Not affiliated</div>
+    <a href="https://x.com/opaeoh" target="_blank" class="profile-link">@opaeoh</a>
+    <div class="search-container">
+        <script async src="https://cse.google.com/cse.js?cx=f059a6b6baded4d6b"></script>
+        <div class="gcse-search"></div>
+    </div>
+    <div class="footer-text">
+        The search on X isn’t very effective, so PSE seemed like a better option for the task.
+    </div>
+
+    <script>
+        (function() {
+            const konamiCode = [
+                'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 
+                'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 
+                'KeyB', 'KeyA'
+            ];
+            let konamiProgress = 0;
+
+            document.addEventListener('keydown', (e) => {
+                if (e.code === konamiCode[konamiProgress]) {
+                    konamiProgress++;
+
+                    if (konamiProgress === konamiCode.length) {
+                        const xLogo = document.getElementById('x-logo');
+                        xLogo.classList.add('spin');
+                        setTimeout(() => {
+                            xLogo.classList.remove('spin');
+                        }, 1000);
+                        konamiProgress = 0;
+                    }
+                } else {
+                    konamiProgress = 0;
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
